@@ -1,0 +1,39 @@
+{
+  "name": "ExaltedInitiativeTracker",
+  "version": "1.0.0",
+  "description": "```\r {\r   \"pieces\": [\r     {\r       \"id\": 1,\r       \"name\": \"Glorious Hammer\",\r       \"color\": \"#0000ff\",\r       \"acted\": true,\r       \"initiative\": -5\r     },\r     {},\r     {},\r     ...\r     {}\r   ]\r }\r ```",
+  "main": "index.js",
+  "dependencies": {
+    "bytes": "^3.1.0",
+    "content-type": "^1.0.4",
+    "depd": "^1.1.2",
+    "destroy": "^1.0.4",
+    "ee-first": "^1.1.1",
+    "encodeurl": "^1.0.2",
+    "escape-html": "^1.0.3",
+    "etag": "^1.8.1",
+    "express": "^4.17.1",
+    "forwarded": "^0.1.2",
+    "fresh": "^0.5.2",
+    "inherits": "^2.0.3",
+    "ipaddr.js": "^1.9.1",
+    "media-typer": "^0.3.0",
+    "mime": "^1.6.0",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scrivener/ExaltedInitiativeTracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/scrivener/ExaltedInitiativeTracker/issues"
+  },
+  "homepage": "https://github.com/scrivener/ExaltedInitiativeTracker#readme"
+}
