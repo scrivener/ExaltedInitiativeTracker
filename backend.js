@@ -4,17 +4,21 @@ const app = express();
 const port = 3000;
 const fs = require('fs')
 
-var state = {
-  'pieces': [
-    {
-      'name': 'Glorious Hammer',
-      'id': 1,
-      'color': '#abcdea',
-      'initiative': 20,
-      'acted': false
-    }
-  ]
-};
+
+var state = JSON.parse(fs.readFileSync('state.json', 'utf-8'))
+console.log('Starting state');
+console.log(state);
+// {
+//   'pieces': [
+//     {
+//       'name': 'Glorious Hammer',
+//       'id': 1,
+//       'color': '#abcdea',
+//       'initiative': 20,
+//       'acted': false
+//     }
+//   ]
+// };
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
