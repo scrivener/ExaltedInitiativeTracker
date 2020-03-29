@@ -4,21 +4,14 @@ const app = express();
 const port = 3000;
 const fs = require('fs')
 
-
-var state = JSON.parse(fs.readFileSync('state.json', 'utf-8'))
+var state;
+try {
+  state = JSON.parse(fs.readFileSync('state.json', 'utf-8'));
+} catch (e) {
+  state = {'pieces': []}
+}
 console.log('Starting state');
 console.log(state);
-// {
-//   'pieces': [
-//     {
-//       'name': 'Glorious Hammer',
-//       'id': 1,
-//       'color': '#abcdea',
-//       'initiative': 20,
-//       'acted': false
-//     }
-//   ]
-// };
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
@@ -40,11 +33,15 @@ io.on('connection', function(socket){
     try {
       let newState = msg;
       state = newState
-      console.log('JSON.parsed a new state:');
+      console.log('Received a new state from a client:');
       console.log(newState);
       io.emit('update', state);
 
       try {
+        // Write synchronously to prevent weird interleavings of racing
+        // requests/file writes that could leave the server memory
+        // out of sync with the saved state file, or the saved state
+        // file out of sync with the client.
         fs.writeFileSync('state.json', JSON.stringify(state));
         console.log('Successfully wrote');
         console.log(state);
