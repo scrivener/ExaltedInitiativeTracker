@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 //const http = require('http').createServer(app);
 const port = 3000;
+const fs = require('fs')
 
 var state = {
   'pieces': [
@@ -33,11 +34,21 @@ io.on('connection', function(socket){
   // 2. Broadcast the new state to all clients
   socket.on('update', function(msg) {
     try {
-      let newState = JSON.parse(msg);
+      let newState = msg;
       state = newState
       console.log('JSON.parsed a new state:');
       console.log(newState);
       io.emit('update', state);
+
+      try {
+        fs.writeFileSync('state.json', JSON.stringify(state));
+        console.log('Successfully wrote');
+        console.log(state);
+      }
+      catch (e) {
+        console.error(err);
+      }
+
     } catch (e) {
       console.log(e);
       console.log('Could not JSON.parse this: ' + msg);
