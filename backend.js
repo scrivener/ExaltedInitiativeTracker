@@ -1,14 +1,17 @@
 const express = require('express');
 const app = express();
 //const http = require('http').createServer(app);
-const port = 3000;
+const port = 3001;
 const fs = require('fs')
 
 var state;
 try {
   state = JSON.parse(fs.readFileSync('state.json', 'utf-8'));
 } catch (e) {
-  state = {'pieces': []}
+  state = {
+    'pieces': [],
+    'round': 1
+  }
 }
 console.log('Starting state');
 console.log(state);
