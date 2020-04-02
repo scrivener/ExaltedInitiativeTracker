@@ -38,7 +38,7 @@ io.on('connection', function(socket){
       state = newState
       console.log('Received a new state from a client:');
       console.log(newState);
-      io.emit('update', state);
+      socket.broadcast.emit('update', state);
 
       try {
         // Write synchronously to prevent weird interleavings of racing
