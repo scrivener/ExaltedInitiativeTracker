@@ -19,7 +19,7 @@
     "ipaddr.js": "^1.9.1",
     "media-typer": "^0.3.0",
     "mime": "^1.6.0",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.4.0"
   },
   "devDependencies": {},
   "scripts": {
